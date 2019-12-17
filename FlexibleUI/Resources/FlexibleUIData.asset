@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556320ace4390d5439067f078ae32593, type: 3}
+  m_Name: FlexibleUIData
+  m_EditorClassIdentifier: 
+  flexibleUIButtons:
+  - name: Main
+    type: 0
+    buttonSprite: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+    buttonSpriteState:
+      m_HighlightedSprite: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb,
+        type: 3}
+      m_PressedSprite: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb,
+        type: 3}
+      m_DisabledSprite: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb,
+        type: 3}
+    buttonColorBlock:
+      m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+      m_HighlightedColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+      m_PressedColor: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
+      m_DisabledColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0.6431373}
+      m_ColorMultiplier: 1
+      m_FadeDuration: 0.2
+    defaultColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+    defaultIcon: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+    confirmColor: {r: 0.53113025, g: 0.9056604, b: 0.43147027, a: 1}
+    confirmIcon: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+    declineColor: {r: 0.9339623, g: 0.3216002, b: 0.3216002, a: 1}
+    declineIcon: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+    warningColor: {r: 0.9957547, g: 1, b: 0.36320752, a: 1}
+    warningIcon: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+    standardColor: {r: 0.19824673, g: 0.35544726, b: 0.9339623, a: 1}
+    standardIcon: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+    rewardColor: {r: 0.9150943, g: 0.71821076, b: 0.34100214, a: 1}
+    rewardIcon: {fileID: 21300000, guid: 2dd0d15f4de4b3549b23e42c09df75fb, type: 3}
+  - name: SmallButton
+    type: 1
+    buttonSprite: {fileID: 21300000, guid: b77c50bcb5b75b941bc6cf19e52a8f93, type: 3}
+    buttonSpriteState:
+      m_HighlightedSprite: {fileID: 21300000, guid: b77c50bcb5b75b941bc6cf19e52a8f93,
+        type: 3}
+      m_PressedSprite: {fileID: 21300000, guid: b77c50bcb5b75b941bc6cf19e52a8f93,
+        type: 3}
+      m_DisabledSprite: {fileID: 21300000, guid: b77c50bcb5b75b941bc6cf19e52a8f93,
+        type: 3}
+    buttonColorBlock:
+      m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+      m_HighlightedColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+      m_PressedColor: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
+      m_DisabledColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0.6431373}
+      m_ColorMultiplier: 1
+      m_FadeDuration: 0.2
+    defaultColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+    defaultIcon: {fileID: 21300000, guid: b77c50bcb5b75b941bc6cf19e52a8f93, type: 3}
+    confirmColor: {r: 0.53113025, g: 0.9056604, b: 0.43147027, a: 1}
+    confirmIcon: {fileID: 21300000, guid: ae25a67f80c3e5d4ab7089d4054fa0e9, type: 3}
+    declineColor: {r: 0.9339623, g: 0.3216002, b: 0.3216002, a: 1}
+    declineIcon: {fileID: 21300000, guid: 452c39e720b636840aceabca2fc2cf3b, type: 3}
+    warningColor: {r: 0.9957547, g: 1, b: 0.36320752, a: 1}
+    warningIcon: {fileID: 21300000, guid: 0f8e4a1b54d343f47bc79fdbc7308115, type: 3}
+    standardColor: {r: 0.2, g: 0.35686275, b: 0.93333334, a: 1}
+    standardIcon: {fileID: 21300000, guid: 69c663928794af54687231d91f5f680c, type: 3}
+    rewardColor: {r: 0.9137255, g: 0.7176471, b: 0.34117648, a: 1}
+    rewardIcon: {fileID: 21300000, guid: f11f5fd8372f2044c9df103dd282753a, type: 3}
+  - name: MidButton
+    type: 2
+    buttonSprite: {fileID: 21300000, guid: 5f6088c6a0f61b8428c4caad08e8eea5, type: 3}
+    buttonSpriteState:
+      m_HighlightedSprite: {fileID: 21300000, guid: 5f6088c6a0f61b8428c4caad08e8eea5,
+        type: 3}
+      m_PressedSprite: {fileID: 21300000, guid: 5f6088c6a0f61b8428c4caad08e8eea5,
+        type: 3}
+      m_DisabledSprite: {fileID: 21300000, guid: 5f6088c6a0f61b8428c4caad08e8eea5,
+        type: 3}
+    buttonColorBlock:
+      m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+      m_HighlightedColor: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+      m_PressedColor: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
+      m_DisabledColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0.6431373}
+      m_ColorMultiplier: 1
+      m_FadeDuration: 0.2
+    defaultColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
+    defaultIcon: {fileID: 21300000, guid: 5f6088c6a0f61b8428c4caad08e8eea5, type: 3}
+    confirmColor: {r: 0.53113025, g: 0.9056604, b: 0.43147027, a: 1}
+    confirmIcon: {fileID: 21300000, guid: 39da56e2f9c81984481d353006317b57, type: 3}
+    declineColor: {r: 0.9339623, g: 0.3216002, b: 0.3216002, a: 1}
+    declineIcon: {fileID: 21300000, guid: 12a3b04c8c0691b42872becf0b0d104d, type: 3}
+    warningColor: {r: 0.9957547, g: 1, b: 0.36320752, a: 1}
+    warningIcon: {fileID: 21300000, guid: 7e2d945a5755abd4fae64897f553eff0, type: 3}
+    standardColor: {r: 0.2, g: 0.35686275, b: 0.93333334, a: 1}
+    standardIcon: {fileID: 21300000, guid: 1a443434b2f60964c860e1286cde3e42, type: 3}
+    rewardColor: {r: 0.9137255, g: 0.7176471, b: 0.34117648, a: 1}
+    rewardIcon: {fileID: 21300000, guid: d80fe0efa7700ef4c91d24017f813506, type: 3}
+  flexibleUIText:
+  - name: Head
+    type: 0
+    fontAsset: {fileID: 12800000, guid: 03c46598624266741b18a05853dcf1ad, type: 3}
+    fontStyle: 0
+    fontSize: 80
+    lineSpacing: 0
+    modifier: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasOutline: 1
+    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    outlineX: 5
+    outlineY: 5
+  - name: Body
+    type: 1
+    fontAsset: {fileID: 12800000, guid: 03c46598624266741b18a05853dcf1ad, type: 3}
+    fontStyle: 0
+    fontSize: 40
+    lineSpacing: 0
+    modifier: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasOutline: 0
+    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    outlineX: 5
+    outlineY: 5
+  - name: Title
+    type: 2
+    fontAsset: {fileID: 12800000, guid: 03c46598624266741b18a05853dcf1ad, type: 3}
+    fontStyle: 0
+    fontSize: 40
+    lineSpacing: 0
+    modifier: 0
+    color: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
+    hasOutline: 0
+    outlineColor: {r: 1, g: 1, b: 1, a: 1}
+    outlineX: 5
+    outlineY: 5
+  - name: Button
+    type: 3
+    fontAsset: {fileID: 12800000, guid: 03c46598624266741b18a05853dcf1ad, type: 3}
+    fontStyle: 0
+    fontSize: 40
+    lineSpacing: 0
+    modifier: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasOutline: 1
+    outlineColor: {r: 0, g: 0, b: 0, a: 1}
+    outlineX: 3
+    outlineY: 2
