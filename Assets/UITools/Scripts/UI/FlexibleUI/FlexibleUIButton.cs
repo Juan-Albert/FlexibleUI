@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -24,10 +26,13 @@ namespace UITools
     }
     
     [RequireComponent(typeof(CanvasGroup))]
-    [RequireComponent(typeof(Button))]
+    //[RequireComponent(typeof(Button))]
     [RequireComponent(typeof(Image))]
     public class FlexibleUIButton : FlexibleUI, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
+        
+        [Serializable]
+        public class ClickEvent : UnityEvent { }
         
         public FlexibleUIData.BUTTON_TYPES buttonTypes;
         
@@ -49,12 +54,17 @@ namespace UITools
         
         [HideInInspector]
         public CanvasGroup canvasGroup;
-        [HideInInspector]
-        public Button button;
+        //[HideInInspector]
+        //public Button button;
         [HideInInspector]
         public Image image;
 
         private Tweener twButton;
+        
+        [SerializeField]
+        [Tooltip("Event fires when a user starts to change the selection")]
+        private ClickEvent m_OnClickEvent = new ClickEvent();
+        public ClickEvent OnClickEvent { get { return m_OnClickEvent; } set { m_OnClickEvent = value; } }
         
 
         [ContextMenu("Reset")]
@@ -63,7 +73,7 @@ namespace UITools
 #if UNITY_EDITOR
             canvasGroup = GetComponent<CanvasGroup>();
             image = GetComponent<Image>();
-            button = GetComponent<Button>();
+            //button = GetComponent<Button>();
 
             base.Awake();
 #endif
@@ -79,11 +89,11 @@ namespace UITools
                 
                     if (skinData.flexibleUIButtons[i].type.Equals(buttonTypes))
                     {
-                        button.targetGraphic = image;
+                        //button.targetGraphic = image;
 
                         image.sprite = skinData.flexibleUIButtons[i].buttonSprite;
                         image.type = Image.Type.Sliced;
-
+/*
                         switch (buttonTransition)
                         {
                             case Selectable.Transition.None:
@@ -100,7 +110,7 @@ namespace UITools
                                 button.spriteState = skinData.flexibleUIButtons[i].buttonSpriteState;
                                 break;
                         }
-
+*/
 
                         switch (buttonMode)
                         {
@@ -200,10 +210,7 @@ namespace UITools
 
             if (hasPressTween)
             {
-                if (twButton != null)
-                {
-                    twButton.Kill();
-                }
+                twButton?.Kill();
                 twButton = this.transform.DOScale(pressed, duration).SetEase(Ease.OutSine);
             }
         }
@@ -212,12 +219,11 @@ namespace UITools
         {
             if (hasPressTween)
             {
-                if (twButton != null)
-                {
-                    twButton.Kill();
-                }
+                twButton?.Kill();
                 twButton = this.transform.DOScale(Vector3.one, duration).SetEase(Ease.InSine);
             }
+
+            OnClickEvent?.Invoke();
         }
 
         public void OnPointerClick(PointerEventData eventData)

@@ -54,12 +54,12 @@ public class FlexibleUIData : ScriptableObject
         public string name;
         public BUTTON_TYPES type;
         
-        [Header("Flexible Button Sprites")]
+        [Header("Flexible Button Sprite")]
         public Sprite buttonSprite;
-        public SpriteState buttonSpriteState;
+        //public SpriteState buttonSpriteState;
     
-        [Header("Flexible Button Colors")]
-        public ColorBlock buttonColorBlock;
+        //[Header("Flexible Button Colors")]
+        //public ColorBlock buttonColorBlock;
     
         [Header("Flexible Button Uses")]
         public Color defaultColor;

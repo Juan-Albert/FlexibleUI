@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class FlexibleUIInstance : Editor
+public class UIToolInstance : Editor
 {
     [MenuItem("GameObject/UITools/Flexible UI/Button", priority = 0)]
     public static void AddButton()
@@ -17,25 +17,7 @@ public class FlexibleUIInstance : Editor
         Create("Text", "UITools/FlexibleUI");
     }
     
-    [MenuItem("GameObject/UITools/Scroll View/Vertical", priority = 2)]
-    public static void AddTopScrollView()
-    {
-        Create("VerticalScrollView", "UITools/ScrollView");
-    }
-    
-    [MenuItem("GameObject/UITools/Scroll View/Horizontal", priority = 3)]
-    public static void AddRightScrollView()
-    {
-        Create("HorizontalScrollView", "UITools/ScrollView");
-    }
-    
-    [MenuItem("GameObject/UITools/Scroll View/Grid", priority = 4)]
-    public static void AddGridScrollView()
-    {
-        Create("GridScrollView", "UITools/ScrollView");
-    }
-    
-    [MenuItem("GameObject/UITools/Layout/AutoFlowLayout", priority = 5)]
+    [MenuItem("GameObject/UITools/Layout/AutoFlowLayout", priority = 0)]
     public static void AddAutoFlowLayout()
     {
         Create("AutoFlowLayout", "UITools/Layout");
