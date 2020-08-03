@@ -23,6 +23,18 @@ public class UIToolInstance : Editor
         Create("AutoFlowLayout", "UITools/Layout");
     }
     
+    [MenuItem("GameObject/UITools/Layout/HorizontalScrollSnap", priority = 1)]
+    public static void AddHorizontalScrollSnap()
+    {
+        Create("HSS", "UITools/Layout");
+    }
+    
+    [MenuItem("GameObject/UITools/Layout/VerticalScrollSnap", priority = 2)]
+    public static void AddVerticalScrollSnap()
+    {
+        Create("VSS", "UITools/Layout");
+    }
+    
     private static GameObject clickedObject;
 
     private static GameObject Create(string objectName, string folder)
