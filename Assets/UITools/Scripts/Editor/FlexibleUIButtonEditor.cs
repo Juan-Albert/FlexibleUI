@@ -69,6 +69,8 @@ public class FlexibleUIButtonEditor : Editor
 
         SerializedProperty onClick = serializedObject.FindProperty("m_OnClickEvent");
         EditorGUILayout.PropertyField(onClick);
+        serializedObject.ApplyModifiedProperties();
+
         
         if (!GUI.changed) return;
         
