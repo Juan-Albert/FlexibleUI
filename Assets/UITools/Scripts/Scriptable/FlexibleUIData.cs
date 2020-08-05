@@ -49,36 +49,22 @@ public class FlexibleUIData : ScriptableObject
     }
 
     [Serializable]
+    public class FlexibleButtonProperties
+    {
+        public ButtonMode buttonMode;
+        public Sprite buttonSprite;
+        public Image.Type imageType;
+    }
+
+    [Serializable]
     public class FlexibleButtonData
     {
         public string name;
         public BUTTON_TYPES type;
-        
-        [Header("Flexible Button Sprite")]
-        public Sprite buttonSprite;
-        //public SpriteState buttonSpriteState;
-    
-        //[Header("Flexible Button Colors")]
-        //public ColorBlock buttonColorBlock;
-    
-        [Header("Flexible Button Uses")]
-        public Color defaultColor;
-        public Sprite defaultIcon;
 
-        public Color confirmColor;
-        public Sprite confirmIcon;
+        [Header("Flexible Button Properties")]
+        public List<FlexibleButtonProperties> buttonProperties;
 
-        public Color declineColor;
-        public Sprite declineIcon;
-
-        public Color warningColor;
-        public Sprite warningIcon;
-        
-        public Color standardColor;
-        public Sprite standardIcon;
-        
-        public Color rewardColor;
-        public Sprite rewardIcon;
     }
 
     public List<FlexibleTextData> flexibleUIText;

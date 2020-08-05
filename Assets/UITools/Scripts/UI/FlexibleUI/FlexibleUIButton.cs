@@ -39,10 +39,7 @@ namespace UITools
         [Header("Button Config")] 
         public bool interactable = true;
         public ButtonMode buttonMode= ButtonMode.Default;
-
-        public Selectable.Transition buttonTransition = Selectable.Transition.None;
-        public bool imageByColor;
-
+        
         [Header("Button Tween")] 
         public bool hasPressTween = true;
         public Vector3 pressed = new Vector3(0.9f, 0.9f, 1f);
@@ -89,114 +86,17 @@ namespace UITools
                 
                     if (skinData.flexibleUIButtons[i].type.Equals(buttonTypes))
                     {
-                        //button.targetGraphic = image;
 
-                        image.sprite = skinData.flexibleUIButtons[i].buttonSprite;
-                        image.type = Image.Type.Sliced;
-/*
-                        switch (buttonTransition)
+                        for (int j = 0; j < skinData.flexibleUIButtons[i].buttonProperties.Count; j++)
                         {
-                            case Selectable.Transition.None:
-                                button.transition = buttonTransition;
-                                break;
-                            
-                            case Selectable.Transition.ColorTint:
-                                button.transition = buttonTransition;
-                                button.colors = skinData.flexibleUIButtons[i].buttonColorBlock;
-                                break;
-                            
-                            case Selectable.Transition.SpriteSwap:
-                                button.transition = buttonTransition;
-                                button.spriteState = skinData.flexibleUIButtons[i].buttonSpriteState;
-                                break;
-                        }
-*/
-
-                        switch (buttonMode)
-                        {
-                            case ButtonMode.Default:
-                                if (imageByColor)
-                                {
-                                    image.color = skinData.flexibleUIButtons[i].defaultColor;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-                                else
-                                {
-                                    image.color = Color.white;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-
-                                break;
-
-                            case ButtonMode.Confirm:
-                                if (imageByColor)
-                                {
-                                    image.color = skinData.flexibleUIButtons[i].confirmColor;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-                                else
-                                {
-                                    image.color = Color.white;
-                                    image.sprite = skinData.flexibleUIButtons[i].confirmIcon;
-                                }
-
-                                break;
-
-                            case ButtonMode.Decline:
-                                if (imageByColor)
-                                {
-                                    image.color = skinData.flexibleUIButtons[i].declineColor;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-                                else
-                                {
-                                    image.color = Color.white;
-                                    image.sprite = skinData.flexibleUIButtons[i].declineIcon;
-                                }
-
-                                break;
-
-                            case ButtonMode.Warning:
-                                if (imageByColor)
-                                {
-                                    image.color = skinData.flexibleUIButtons[i].warningColor;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-                                else
-                                {
-                                    image.color = Color.white;
-                                    image.sprite = skinData.flexibleUIButtons[i].warningIcon;
-                                }
-
-                                break;
-                            
-                            case ButtonMode.Standard:
-                                if (imageByColor)
-                                {
-                                    image.color = skinData.flexibleUIButtons[i].standardColor;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-                                else
-                                {
-                                    image.color = Color.white;
-                                    image.sprite = skinData.flexibleUIButtons[i].standardIcon;
-                                }
-
-                                break;
-                            
-                            case ButtonMode.Reward:
-                                if (imageByColor)
-                                {
-                                    image.color = skinData.flexibleUIButtons[i].rewardColor;
-                                    image.sprite = skinData.flexibleUIButtons[i].defaultIcon;
-                                }
-                                else
-                                {
-                                    image.color = Color.white;
-                                    image.sprite = skinData.flexibleUIButtons[i].rewardIcon;
-                                }
+                            if (skinData.flexibleUIButtons[i].buttonProperties[j].buttonMode.Equals(buttonMode))
+                            {
+                                image.sprite = skinData.flexibleUIButtons[i].buttonProperties[j].buttonSprite;
+                                image.type = skinData.flexibleUIButtons[i].buttonProperties[j].imageType;
                                 break;
                             }
+                        }
+                        
                         break;
                     }
                 }
