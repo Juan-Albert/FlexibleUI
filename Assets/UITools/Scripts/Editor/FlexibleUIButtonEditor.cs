@@ -18,7 +18,8 @@ public class FlexibleUIButtonEditor : Editor
         GUI.enabled = true;
         
         EditorGUILayout.LabelField("Button Config", EditorStyles.boldLabel);
-
+        
+        myScript.interactable = EditorGUILayout.Toggle("Interactable", myScript.interactable);
         myScript.buttonTypes = (FlexibleUIData.BUTTON_TYPES) EditorGUILayout.EnumPopup("Button Type", myScript.buttonTypes);
 /*
         bool paint = false;
@@ -71,10 +72,10 @@ public class FlexibleUIButtonEditor : Editor
         EditorGUILayout.PropertyField(onClick);
         serializedObject.ApplyModifiedProperties();
 
-        
+#if UNITY_EDITOR
         if (!GUI.changed) return;
-        
         myScript.OnValidate();
         EditorSceneManager.MarkSceneDirty(myScript.gameObject.scene);
+#endif
     }
 }

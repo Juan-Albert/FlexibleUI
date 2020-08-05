@@ -35,9 +35,9 @@ namespace UITools
         public class ClickEvent : UnityEvent { }
         
         public FlexibleUIData.BUTTON_TYPES buttonTypes;
-        
-        [Header("Button Config")] 
 
+        [Header("Button Config")] 
+        public bool interactable = true;
         public ButtonMode buttonMode= ButtonMode.Default;
 
         public Selectable.Transition buttonTransition = Selectable.Transition.None;
@@ -206,17 +206,21 @@ namespace UITools
         }
 
         public void OnPointerDown(PointerEventData eventData)
-        {            
-
+        {
+            if (!interactable) return;
+            
             if (hasPressTween)
             {
                 twButton?.Kill();
                 twButton = this.transform.DOScale(pressed, duration).SetEase(Ease.OutSine);
             }
+
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            if (!interactable) return;
+            
             if (hasPressTween)
             {
                 twButton?.Kill();
@@ -224,10 +228,13 @@ namespace UITools
             }
 
             OnClickEvent?.Invoke();
+
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (!interactable) return;
+            
             if (hasSound)
             {
                 //AkSoundEngine.PostEvent("Tap_Generic", this.gameObject);
