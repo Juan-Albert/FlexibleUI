@@ -127,7 +127,6 @@ namespace UITools
                 twButton = this.transform.DOScale(Vector3.one, duration).SetEase(Ease.InSine);
             }
 
-            OnClickEvent?.Invoke();
 
         }
 
@@ -147,6 +146,9 @@ namespace UITools
                 //    SoundManager.instance.PlayClip(AudioBank.instance.tapClose, false);
                 //}
             }
+            
+            OnClickEvent?.Invoke();
+
         }
     }
 
