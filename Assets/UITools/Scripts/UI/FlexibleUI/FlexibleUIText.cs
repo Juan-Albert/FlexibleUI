@@ -21,7 +21,7 @@ namespace UITools
 
         private Text textLabel;
     
-        [ContextMenu("Reset")]
+        
         protected override void Awake()
         {
 #if UNITY_EDITOR
@@ -29,7 +29,10 @@ namespace UITools
             base.Awake();
 #endif
         }
-        [ContextMenu("Apply values")]
+        
+        /// <summary>
+        /// Sets the skin configuration of the text object
+        /// </summary>
         protected override void OnSkinUI()
         {
             if (textTypes != FlexibleUIData.TEXT_TYPES.None)
@@ -66,6 +69,9 @@ namespace UITools
             base.OnSkinUI();
         }
         
+        /// <summary>
+        /// Apply a text modifier to the text parameter
+        /// </summary>
         protected string ModifyText(string text, TextModifier modifier)
         {
             if (!string.IsNullOrEmpty(text))

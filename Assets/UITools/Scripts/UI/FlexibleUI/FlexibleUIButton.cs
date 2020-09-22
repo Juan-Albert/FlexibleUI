@@ -45,7 +45,7 @@ namespace UITools
         public Vector3 pressed = new Vector3(0.9f, 0.9f, 1f);
         public float duration = 0.1f;
         
-        [Header("Button Sound")] 
+        [Header("Button Sound")]
         public bool hasSound = true;
         public SoundTapType soundTapType = SoundTapType.UIForward;
         
@@ -64,7 +64,7 @@ namespace UITools
         public ClickEvent OnClickEvent { get { return m_OnClickEvent; } set { m_OnClickEvent = value; } }
         
 
-        [ContextMenu("Reset")]
+        
         protected override void Awake()
         {
 #if UNITY_EDITOR
@@ -75,7 +75,10 @@ namespace UITools
             base.Awake();
 #endif
         }
-        [ContextMenu("Apply values")]
+        
+        /// <summary>
+        /// Sets the skin configuration of the button object
+        /// </summary>
         protected override void OnSkinUI()
         {
             if (buttonTypes != FlexibleUIData.BUTTON_TYPES.None)
@@ -102,7 +105,6 @@ namespace UITools
                 }
             }
             base.OnSkinUI();
-
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -126,8 +128,7 @@ namespace UITools
                 twButton?.Kill();
                 twButton = this.transform.DOScale(Vector3.one, duration).SetEase(Ease.InSine);
             }
-
-
+            
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -148,7 +149,6 @@ namespace UITools
             }
             
             OnClickEvent?.Invoke();
-
         }
     }
 

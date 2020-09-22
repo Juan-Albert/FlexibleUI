@@ -11,6 +11,9 @@ namespace UITools
 
         protected FlexibleUIData skinData;
         
+        /// <summary>
+        /// Sets the skin of the Flexible object
+        /// </summary>
         protected virtual void OnSkinUI()
         {
             
