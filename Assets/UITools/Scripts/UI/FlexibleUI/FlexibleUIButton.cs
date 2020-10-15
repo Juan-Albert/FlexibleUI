@@ -12,11 +12,9 @@ namespace UITools
     public enum ButtonMode
     {
         Default,
-        Confirm,
-        Decline,
-        Warning,
-        Standard,
-        Reward
+        Free,
+        Cancel,
+        Special
     }
 
     public enum SoundTapType
@@ -38,7 +36,7 @@ namespace UITools
 
         [Header("Button Config")] 
         public bool interactable = true;
-        public ButtonMode buttonMode= ButtonMode.Default;
+        public ButtonMode buttonMode = ButtonMode.Default;
         
         [Header("Button Tween")] 
         public bool hasPressTween = true;
@@ -56,6 +54,9 @@ namespace UITools
         [HideInInspector]
         public Image image;
 
+        [HideInInspector] 
+        public FlexibleUIText buttonText;
+
         private Tweener twButton;
         
         [SerializeField]
@@ -70,7 +71,14 @@ namespace UITools
 #if UNITY_EDITOR
             canvasGroup = GetComponent<CanvasGroup>();
             image = GetComponent<Image>();
-            //button = GetComponent<Button>();
+            
+            if (buttonText == null)
+            {
+                buttonText = Instantiate(Resources.Load<GameObject>("UITools/FlexibleUI/Text")).GetComponent<FlexibleUIText>();
+                buttonText.transform.SetParent(this.transform, false);
+                buttonText.transform.localPosition = Vector3.zero;
+                buttonText.textTypes = FlexibleUIData.TEXT_TYPES.None;
+            }
 
             base.Awake();
 #endif
@@ -89,6 +97,9 @@ namespace UITools
                 
                     if (skinData.flexibleUIButtons[i].type.Equals(buttonTypes))
                     {
+
+                        buttonText.gameObject.SetActive(skinData.flexibleUIButtons[i].hasText);
+
 
                         for (int j = 0; j < skinData.flexibleUIButtons[i].buttonProperties.Count; j++)
                         {

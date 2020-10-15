@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [ExecuteInEditMode]
 public class UIToolEditor : Editor
@@ -38,7 +40,7 @@ public class UIToolEditor : Editor
     }
 
     [MenuItem("GameObject/UITools/Recyclable Scroll View", priority = 3)]
-    private static void createRecyclableScrollView()
+    private static void CreateRecyclableScrollView()
     {
         Create("Recyclable Scroll View", "UITools/Layout");
     }
@@ -49,8 +51,10 @@ public class UIToolEditor : Editor
 
         if (!selected || selected.transform.GetType() != typeof(RectTransform))
         {
-            //todo en modo prefab que se ponga en la raiz del prefab
-            selected = FindObjectOfType<Canvas>().gameObject;
+            Canvas canvas = FindObjectOfType<Canvas>();
+            
+            selected = canvas ? canvas.gameObject : InstanciateCanvas();
+            
         }
 
         if (!selected) return null;
@@ -63,5 +67,29 @@ public class UIToolEditor : Editor
         Undo.RegisterCreatedObjectUndo(item, "Created UITool item");
 
         return item;
+    }
+
+    private static GameObject InstanciateCanvas()
+    {
+        GameObject c = new GameObject();
+        Canvas canvas = c.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        CanvasScaler cs = c.AddComponent<CanvasScaler>();
+        cs.scaleFactor = 1.0f;
+        cs.dynamicPixelsPerUnit = 10f;
+        GraphicRaycaster gr = c.AddComponent<GraphicRaycaster>();
+        c.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 3.0f);
+        c.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 3.0f);
+        c.name = "Canvas";
+
+        if (!FindObjectOfType<EventSystem>())
+        {
+            GameObject ev = new GameObject();
+            ev.AddComponent<EventSystem>();
+            ev.AddComponent<StandaloneInputModule>();
+            ev.name = "EventSystem";
+        }
+        
+        return c;
     }
 }

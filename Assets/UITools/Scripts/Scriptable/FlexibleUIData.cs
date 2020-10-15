@@ -20,9 +20,9 @@ public class FlexibleUIData : ScriptableObject
     public enum BUTTON_TYPES 
     {
         None,
-        Main,
-        Small,
-        Medium
+        Rectangle,
+        Round
+        
     }
     
     [Serializable]
@@ -61,6 +61,7 @@ public class FlexibleUIData : ScriptableObject
     {
         public string name;
         public BUTTON_TYPES type;
+        public bool hasText;
 
         [Header("Flexible Button Properties")]
         public List<FlexibleButtonProperties> buttonProperties;

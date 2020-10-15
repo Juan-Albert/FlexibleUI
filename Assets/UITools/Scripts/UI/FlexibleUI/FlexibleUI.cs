@@ -28,7 +28,8 @@ namespace UITools
 #if UNITY_EDITOR
         public virtual void OnValidate()
         {
-            Awake();
+            if(skinData == null)
+                skinData = Resources.Load("FlexibleUIData") as FlexibleUIData;
             OnSkinUI();
         }
 #endif

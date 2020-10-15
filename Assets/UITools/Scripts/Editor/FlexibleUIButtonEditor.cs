@@ -132,8 +132,15 @@ public class FlexibleUIButtonEditor : Editor
 
 #if UNITY_EDITOR
         if (!GUI.changed) return;
+        Repaint();
+
         myScript.OnValidate();
-        if(!Application.isPlaying) EditorSceneManager.MarkSceneDirty(myScript.gameObject.scene);
+        if (!Application.isPlaying)
+        {
+            EditorApplication.QueuePlayerLoopUpdate();
+            SceneView.RepaintAll();
+            EditorSceneManager.MarkSceneDirty(myScript.gameObject.scene);
+        }
 #endif
     }
 }
