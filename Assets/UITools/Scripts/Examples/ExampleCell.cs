@@ -9,12 +9,10 @@ using UITools;
 public class ExampleCell : MonoBehaviour, ICell
 {
     //UI
-    public Text nameLabel;
-    public Text genderLabel;
     public Text idLabel;
 
     //Model
-    private ContactInfo _contactInfo;
+    private CellData _cellData;
     private int _cellIndex;
 
     private void Start()
@@ -24,19 +22,16 @@ public class ExampleCell : MonoBehaviour, ICell
     }
 
     //This is called from the SetCell method in DataSource
-    public void ConfigureCell(ContactInfo contactInfo,int cellIndex)
+    public void ConfigureCell(CellData cellData,int cellIndex)
     {
         _cellIndex = cellIndex;
-        _contactInfo = contactInfo;
+        _cellData = cellData;
 
-        nameLabel.text = contactInfo.Name;
-        genderLabel.text = contactInfo.Gender;
-        idLabel.text = contactInfo.id;
+        idLabel.text = cellData.id;
     }
 
-    
     private void ButtonListener()
     {
-        Debug.Log("Index : " + _cellIndex +  ", Name : " + _contactInfo.Name  + ", Gender : " + _contactInfo.Gender);
+        Debug.Log("Index : " + _cellIndex);
     }
 }

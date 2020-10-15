@@ -9,10 +9,8 @@ using UnityEngine;
 /// </summary>
 
 //Dummy Data model for demostraion
-public struct ContactInfo
+public struct CellData
 {
-    public string Name;
-    public string Gender;
     public string id;
 }
 
@@ -25,7 +23,7 @@ public class RecyclableScrollerExample : MonoBehaviour, IRecyclableScrollRectDat
     private int _dataLength;
 
     //Dummy data List
-    private List<ContactInfo> _contactList = new List<ContactInfo>();
+    private List<CellData> _cellList = new List<CellData>();
 
     //Recyclable scroll rect's data source must be assigned in Awake.
     private void Awake()
@@ -37,16 +35,14 @@ public class RecyclableScrollerExample : MonoBehaviour, IRecyclableScrollRectDat
     //Initialising _contactList with dummy data 
     private void InitData()
     {
-        if (_contactList != null) _contactList.Clear();
+        if (_cellList != null) _cellList.Clear();
 
         string[] genders = { "Male", "Female" };
         for (int i = 0; i < _dataLength; i++)
         {
-            ContactInfo obj = new ContactInfo();
-            obj.Name = i + "_Name";
-            obj.Gender = genders[Random.Range(0, 2)];
+            CellData obj = new CellData();
             obj.id = "item " + i;
-            _contactList.Add(obj);
+            _cellList.Add(obj);
         }
     }
 
@@ -57,7 +53,7 @@ public class RecyclableScrollerExample : MonoBehaviour, IRecyclableScrollRectDat
     /// </summary>
     public int GetItemCount()
     {
-        return _contactList.Count;
+        return _cellList.Count;
     }
 
     /// <summary>
@@ -68,7 +64,7 @@ public class RecyclableScrollerExample : MonoBehaviour, IRecyclableScrollRectDat
     {
         //Casting to the implemented Cell
         var item = cell as ExampleCell;
-        item.ConfigureCell(_contactList[index],index);
+        item.ConfigureCell(_cellList[index],index);
     }
     
     #endregion

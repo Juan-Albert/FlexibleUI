@@ -16,7 +16,7 @@ namespace UITools
         public RectTransform prototypeCell;
         
         public bool selfInitialize = true;
-        [Tooltip("If active, the scroll will repeat the content when reach the end of it")]
+        //[Tooltip("If active, the scroll will repeat the content when reach the end of it")]
         public bool looping = false;
 
         //Pool Generation
@@ -101,7 +101,7 @@ namespace UITools
         }
 
         /// <summary>
-        /// Sets the uppper and lower bounds for recycling cells.
+        /// Sets the upper and lower bounds for recycling cells.
         /// </summary>
         private void SetRecyclingBounds()
         {
@@ -200,7 +200,7 @@ namespace UITools
             
             int n = 0;
             float posY = 0;
-            while (_cellPool[topMostCellIndex].minY() > _recyclableViewBounds.max.y && currentItemCount < dataSource.GetItemCount())
+            while (_cellPool[topMostCellIndex].minY() > _recyclableViewBounds.max.y && (looping || currentItemCount < dataSource.GetItemCount()))
             {
                 //Move top cell to bottom
                 posY = _cellPool[bottomMostCellIndex].anchoredPosition.y - _cellPool[bottomMostCellIndex].sizeDelta.y;
@@ -219,8 +219,8 @@ namespace UITools
             }
 
             //Content anchor position adjustment.
-            _listContainer.anchoredPosition += n * Vector2.up * _cellPool[topMostCellIndex].sizeDelta.y;
-            content.anchoredPosition -= n * Vector2.up * _cellPool[topMostCellIndex].sizeDelta.y;
+            _listContainer.anchoredPosition += n  * _cellPool[topMostCellIndex].sizeDelta.y * Vector2.up;
+            content.anchoredPosition -= n * _cellPool[topMostCellIndex].sizeDelta.y * Vector2.up;
             m_ContentStartPosition += -new Vector2(0, n * _cellPool[topMostCellIndex].sizeDelta.y);
 
             _recycling = false;
@@ -235,7 +235,7 @@ namespace UITools
 
             int n = 0;
             float posY = 0;
-            while (_cellPool[bottomMostCellIndex].maxY() < _recyclableViewBounds.min.y && currentItemCount > _cellPool.Count)
+            while (_cellPool[bottomMostCellIndex].maxY() < _recyclableViewBounds.min.y && (looping || currentItemCount > _cellPool.Count))
             {
                 currentItemCount -= 1;
                 Debug.Log("BottomToTop: " + currentItemCount);
