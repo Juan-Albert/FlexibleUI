@@ -72,7 +72,7 @@ namespace UITools
             canvasGroup = GetComponent<CanvasGroup>();
             image = GetComponent<Image>();
             
-            if (buttonText == null)
+            if (buttonText == null && buttonTypes != FlexibleUIData.BUTTON_TYPES.None)
             {
                 buttonText = Instantiate(Resources.Load<GameObject>("UITools/FlexibleUI/Text")).GetComponent<FlexibleUIText>();
                 buttonText.transform.SetParent(this.transform, false);

@@ -37,6 +37,9 @@ namespace UITools
         {
             if (textTypes != FlexibleUIData.TEXT_TYPES.None)
             {
+                if(textLabel == null)
+                    textLabel = GetComponent<Text>();
+                
                 for (int i = 0; i < skinData.flexibleUIText.Count; i++)
                 {
                     if (skinData.flexibleUIText[i].type.Equals(textTypes))
