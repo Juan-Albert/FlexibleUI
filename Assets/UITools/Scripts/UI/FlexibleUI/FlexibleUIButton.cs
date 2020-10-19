@@ -98,7 +98,8 @@ namespace UITools
                     if (skinData.flexibleUIButtons[i].type.Equals(buttonTypes))
                     {
 
-                        buttonText.gameObject.SetActive(skinData.flexibleUIButtons[i].hasText);
+                        if(buttonText != null)
+                            buttonText.gameObject.SetActive(skinData.flexibleUIButtons[i].hasText);
 
 
                         for (int j = 0; j < skinData.flexibleUIButtons[i].buttonProperties.Count; j++)
