@@ -125,7 +125,9 @@ namespace UITools
             
             if (hasPressTween)
             {
-                twButton?.Kill();
+                if(twButton != null && twButton.IsActive())
+                    twButton.Kill();
+                
                 twButton = this.transform.DOScale(pressed, duration).SetEase(Ease.OutSine);
             }
 
@@ -137,7 +139,9 @@ namespace UITools
             
             if (hasPressTween)
             {
-                twButton?.Kill();
+                if(twButton != null && twButton.IsActive())
+                    twButton.Kill();
+                
                 twButton = this.transform.DOScale(Vector3.one, duration).SetEase(Ease.InSine);
             }
             
