@@ -54,6 +54,9 @@ namespace UITools
         [HideInInspector]
         public Image image;
 
+        [HideInInspector]
+        public RectTransform rectTransform;
+        
         [HideInInspector] 
         public FlexibleUIText buttonText;
 
@@ -68,10 +71,12 @@ namespace UITools
         
         protected override void Awake()
         {
-#if UNITY_EDITOR
+            rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
             image = GetComponent<Image>();
             
+#if UNITY_EDITOR
+
             if (buttonText == null && buttonTypes != FlexibleUIData.BUTTON_TYPES.None)
             {
                 buttonText = Instantiate(Resources.Load<GameObject>("UITools/FlexibleUI/Text")).GetComponent<FlexibleUIText>();
@@ -128,6 +133,7 @@ namespace UITools
                 if(twButton != null && twButton.IsActive())
                     twButton.Kill();
                 
+                transform.localScale = Vector3.one;
                 twButton = this.transform.DOScale(pressed, duration).SetEase(Ease.OutSine);
             }
 
@@ -142,6 +148,7 @@ namespace UITools
                 if(twButton != null && twButton.IsActive())
                     twButton.Kill();
                 
+                transform.localScale = pressed;
                 twButton = this.transform.DOScale(Vector3.one, duration).SetEase(Ease.InSine);
             }
             
