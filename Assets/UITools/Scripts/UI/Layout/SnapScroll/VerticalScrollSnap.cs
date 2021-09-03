@@ -41,7 +41,8 @@ namespace UITools
                 }
             }
 
-            CurrentPage = GetPageForPosition(_screensContainer.localPosition);
+            if(updateClosestElement)
+                CurrentPage = GetPageForPosition(_screensContainer.localPosition);
 
             //If the container is moving check if it needs to settle on a page
             if (!_pointerDown)

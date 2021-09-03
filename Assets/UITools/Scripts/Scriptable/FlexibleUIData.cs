@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UITools;
@@ -47,6 +48,29 @@ public class FlexibleUIData : ScriptableObject
         //public float outlineX;
         //public float outlineY;
     }
+    
+    [Serializable]
+    public class FlexibleTextMeshData 
+    {
+        public string name;
+        public TEXT_TYPES type;
+
+        [Header("Flexible Text Parameters")]
+        public TMP_FontAsset fontAsset;
+        public FontStyles fontStyle;
+        public int fontSize;
+        public int lineSpacing;
+        public TextModifier modifier;
+        public Color color;
+        public bool autoSize;
+        
+        //[Header("Flexible Text Outline")]
+        //public bool hasOutline;
+        //public Material outlineMaterial;
+        //public Color outlineColor;
+        //public float outlineX;
+        //public float outlineY;
+    }
 
     [Serializable]
     public class FlexibleButtonProperties
@@ -69,6 +93,7 @@ public class FlexibleUIData : ScriptableObject
     }
 
     public List<FlexibleTextData> flexibleUIText;
+    public List<FlexibleTextMeshData> flexibleUITextMesh;
     public List<FlexibleButtonData> flexibleUIButtons;
 
 }

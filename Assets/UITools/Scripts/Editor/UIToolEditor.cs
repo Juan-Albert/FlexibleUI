@@ -21,6 +21,12 @@ public class UIToolEditor : Editor
         Create("Text", "UITools/FlexibleUI");
     }
     
+    [MenuItem("GameObject/UITools/Flexible UI/Text Mesh", priority = 2)]
+    public static void AddTextMesh()
+    {
+        Create("TextMesh", "UITools/FlexibleUI");
+    }
+    
     [MenuItem("GameObject/UITools/Layout/AutoFlow Layout", priority = 0)]
     public static void AddAutoFlowLayout()
     {

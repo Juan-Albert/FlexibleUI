@@ -20,18 +20,18 @@ namespace UITools
         
         void Update()
         {
-            if (!_lerp && _scroll_rect.velocity == Vector2.zero)
-            {
-                if (!_settled && !_pointerDown)
-                {
-                    if (!IsRectSettledOnaPage(_screensContainer.localPosition))
-                    {
-                        ScrollToClosestElement();
-                    }
-                }
-                return;
-            }
-            else if (_lerp)
+            //if (!_lerp && _scroll_rect.velocity == Vector2.zero)
+            //{
+            //    if (!_settled && !_pointerDown)
+            //    {
+            //        if (!IsRectSettledOnaPage(_screensContainer.localPosition))
+            //        {
+            //            ScrollToClosestElement();
+            //        }
+            //    }
+            //    return;
+            //}
+            if (_lerp)
             {
                 _screensContainer.localPosition = Vector3.Lerp(_screensContainer.localPosition, _lerp_target, transitionSpeed * Time.deltaTime);
                 if (Vector3.Distance(_screensContainer.localPosition, _lerp_target) < 5f) //todo balancear variable y cambiar distance por math abs a una variable
@@ -42,20 +42,21 @@ namespace UITools
                 }
             }
 
-            CurrentPage = GetPageForPosition(_screensContainer.localPosition);
+            if(updateClosestElement)
+                CurrentPage = GetPageForPosition(_screensContainer.localPosition);
 
             //If the container is moving check if it needs to settle on a page
-            if (!_pointerDown)
-            {
-                if (_scroll_rect.velocity.x > 0.01 || _scroll_rect.velocity.x < 0.01)
-                {
-                    //if the pointer is released and is moving slower than the threshold, then just land on a page
-                    if (IsRectMovingSlowerThanThreshold(0))
-                    {
-                        ScrollToClosestElement();
-                    }
-                }
-            }
+            //if (!_pointerDown)
+            //{
+            //    if (_scroll_rect.velocity.x > 0.01 || _scroll_rect.velocity.x < 0.01)
+            //    {
+            //        //if the pointer is released and is moving slower than the threshold, then just land on a page
+            //        if (IsRectMovingSlowerThanThreshold(0))
+            //        {
+            //            ScrollToClosestElement();
+            //        }
+            //    }
+            //}
         }
         
         private bool IsRectMovingSlowerThanThreshold(float startingSpeed)
@@ -114,6 +115,12 @@ namespace UITools
             SetScrollContainerPosition();
         }
 
+        [ContextMenu("GotoStart")]
+        public void Restart()
+        {
+            GoToScreen(0);
+        }
+        
         /// <summary>
         /// Remove a new child to this Scroll Snap and recalculate it's children 
         /// *Note, this is an index address (0-x)

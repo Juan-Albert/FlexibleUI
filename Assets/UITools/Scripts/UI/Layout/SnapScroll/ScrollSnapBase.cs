@@ -79,6 +79,9 @@ namespace UITools
             }
         }
         
+        [Tooltip("By default, the scroll will not update the closest element to reposition")]
+        public bool updateClosestElement = false;
+        
         [Tooltip("By default the container will lerp to the start when enabled in the scene, this option overrides this and forces it to simply jump without lerping")]
         public bool jumpOnEnable = false;
 
@@ -155,7 +158,9 @@ namespace UITools
             }
         }
 
-        //Function for switching screens with buttons
+        /// <summary>
+        /// Function for switching screens with buttons
+        /// </summary>
         public void NextScreen()
         {
             if (_currentScreen < _screens - 1)
@@ -169,7 +174,9 @@ namespace UITools
             }
         }
 
-        //Function for switching screens with buttons
+        /// <summary>
+        /// Function for switching screens with buttons
+        /// </summary>
         public void PreviousScreen()
         {
             if (_currentScreen > 0)
@@ -179,6 +186,25 @@ namespace UITools
                 _lerp = true;
                 CurrentPage = _currentScreen - 1;
                 GetPositionForPage(_currentScreen, ref _lerp_target);
+                ScreenChange();
+            }
+        }
+
+        /// <summary>
+        /// Function for switching to a specific screen instantly
+        /// *Note, this is based on a 0 starting index - 0 to x
+        /// </summary>
+        /// <param name="screenIndex">0 starting index of page to jump to</param>
+        public void JumpToScreen(int screenIndex)
+        {
+            if (screenIndex <= _screens - 1 && screenIndex >= 0)
+            {
+                if (!_lerp) StartScreenChange();
+
+                _lerp = true;
+                CurrentPage = screenIndex;
+                GetPositionForPage(_currentScreen, ref _lerp_target);
+                _screensContainer.localPosition = _lerp_target;
                 ScreenChange();
             }
         }
@@ -272,10 +298,10 @@ namespace UITools
         
         internal void GetPositionForPage(int page, ref Vector2 target)
         {
-
             RectTransform itemTransform = (RectTransform) childObjects[page].transform;
             target = (Vector2)_scroll_rect.transform.InverseTransformPoint(_screensContainer.position)
                                             - (Vector2)_scroll_rect.transform.InverseTransformPoint(itemTransform.position);
+            
         }
         
         internal void ScreenChange()
