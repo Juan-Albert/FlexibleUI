@@ -32,7 +32,8 @@ namespace UITools
         [Serializable]
         public class ClickEvent : UnityEvent { }
         
-        public FlexibleUIData.BUTTON_TYPES buttonTypes;
+        [SerializeField]
+        public FlexibleEnum buttonType = new FlexibleEnum(FlexibleEnum.FlexibleEnumTypes.Button);
 
         [Header("Button Config")] 
         public bool interactable = true;
@@ -77,12 +78,12 @@ namespace UITools
             
 #if UNITY_EDITOR
 
-            if (buttonText == null && buttonTypes != FlexibleUIData.BUTTON_TYPES.None)
+            if (buttonText == null && buttonType.enumSelected != "None")
             {
                 buttonText = Instantiate(Resources.Load<GameObject>("UITools/FlexibleUI/Text")).GetComponent<FlexibleUIText>();
                 buttonText.transform.SetParent(this.transform, false);
                 buttonText.transform.localPosition = Vector3.zero;
-                buttonText.textTypes = FlexibleUIData.TEXT_TYPES.None;
+                buttonText.textType.enumSelected = "None";
             }
 
             base.Awake();
@@ -94,13 +95,13 @@ namespace UITools
         /// </summary>
         protected override void OnSkinUI()
         {
-            if (buttonTypes != FlexibleUIData.BUTTON_TYPES.None)
+            if (buttonType.enumSelected != "None")
             {
                 image.enabled = true;
                 for (int i = 0; i < skinData.flexibleUIButtons.Count; i++)
                 {
                 
-                    if (skinData.flexibleUIButtons[i].type.Equals(buttonTypes))
+                    if (skinData.flexibleUIButtons[i].name.Equals(buttonType.enumSelected))
                     {
 
                         if(buttonText != null)

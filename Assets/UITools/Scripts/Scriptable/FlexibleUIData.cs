@@ -9,28 +9,11 @@ using UITools;
 [CreateAssetMenu(fileName = "FlexibleUIData", menuName = "FlexibleUIData", order=3)]
 public class FlexibleUIData : ScriptableObject
 {
-    public enum TEXT_TYPES 
-    {
-        None,
-        Head,
-        Body,
-        Title,
-        Button
-    }
-    
-    public enum BUTTON_TYPES 
-    {
-        None,
-        Rectangle,
-        Round
-        
-    }
-    
+
     [Serializable]
     public class FlexibleTextData 
     {
         public string name;
-        public TEXT_TYPES type;
 
         [Header("Flexible Text Parameters")]
         public Font fontAsset;
@@ -53,7 +36,6 @@ public class FlexibleUIData : ScriptableObject
     public class FlexibleTextMeshData 
     {
         public string name;
-        public TEXT_TYPES type;
 
         [Header("Flexible Text Parameters")]
         public TMP_FontAsset fontAsset;
@@ -84,16 +66,32 @@ public class FlexibleUIData : ScriptableObject
     public class FlexibleButtonData
     {
         public string name;
-        public BUTTON_TYPES type;
         public bool hasText;
 
         [Header("Flexible Button Properties")]
         public List<FlexibleButtonProperties> buttonProperties;
 
     }
+    
+    [Serializable]
+    public class FlexibleToggleData
+    {
+        public string name;
+
+        public bool haveOwnColor;
+        public bool alphaAlwaysActive;
+        
+        public Color toggleSelectedColor;
+        public Color toggleUnSelectedColor;
+        public List<Color> toggleColors;
+        public Sprite toggleSprite;
+
+    }
 
     public List<FlexibleTextData> flexibleUIText;
     public List<FlexibleTextMeshData> flexibleUITextMesh;
     public List<FlexibleButtonData> flexibleUIButtons;
+    public List<FlexibleToggleData> flexibleUIToggles;
+
 
 }

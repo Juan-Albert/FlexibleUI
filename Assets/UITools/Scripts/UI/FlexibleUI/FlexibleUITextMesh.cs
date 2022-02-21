@@ -10,7 +10,8 @@ namespace UITools
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class FlexibleUITextMesh : FlexibleUI
     {
-        public FlexibleUIData.TEXT_TYPES textTypes = FlexibleUIData.TEXT_TYPES.Body;
+        [SerializeField]
+        public FlexibleEnum textType = new FlexibleEnum(FlexibleEnum.FlexibleEnumTypes.TextMesh);
         public bool changeColor = true;
         public bool changeMaxSize = false;
 
@@ -30,14 +31,14 @@ namespace UITools
         /// </summary>
         protected override void OnSkinUI()
         {
-            if (textTypes != FlexibleUIData.TEXT_TYPES.None)
+            if (textType.enumSelected != "None")
             {
                 if(textLabel == null)
                     textLabel = GetComponent<TextMeshProUGUI>();
                 
                 for (int i = 0; i < skinData.flexibleUIText.Count; i++)
                 {
-                    if (skinData.flexibleUIText[i].type.Equals(textTypes))
+                    if (skinData.flexibleUIText[i].name.Equals(textType.enumSelected))
                     {
                     
                         textLabel.font = skinData.flexibleUITextMesh[i].fontAsset;
@@ -45,7 +46,7 @@ namespace UITools
                         textLabel.fontStyle = skinData.flexibleUITextMesh[i].fontStyle;
                     
                         //textLabel.lineSpacing = skinData.flexibleUIText[i].lineSpacing;
-                        textLabel.text = ModifyText(textLabel.text, skinData.flexibleUIText[i].modifier);
+                        textLabel.text = UIUtils.ModifyText(textLabel.text, skinData.flexibleUIText[i].modifier);
                         
                         textLabel.autoSizeTextContainer = skinData.flexibleUIText[i].hasBestFit;
                         
@@ -70,17 +71,7 @@ namespace UITools
         /// <summary>
         /// Apply a text modifier to the text parameter
         /// </summary>
-        protected string ModifyText(string text, TextModifier modifier)
-        {
-            if (!string.IsNullOrEmpty(text))
-            {
-                if (modifier == TextModifier.None) return text;
-                if (modifier == TextModifier.ToLowercase) return text.ToLower();
-                if (modifier == TextModifier.ToUppercase) return text.ToUpper();
-            }
-            return text;
-            
-        }
+        
     }
 
 }

@@ -15,10 +15,11 @@ namespace UITools
     [RequireComponent(typeof(Text))]
     public class FlexibleUIText : FlexibleUI
     {
-        public FlexibleUIData.TEXT_TYPES textTypes = FlexibleUIData.TEXT_TYPES.Body;
+        public FlexibleEnum textType = new FlexibleEnum(FlexibleEnum.FlexibleEnumTypes.Text);
         public bool changeColor = true;
         public bool changeMaxSize = false;
 
+        
         private Text textLabel;
     
         
@@ -35,37 +36,34 @@ namespace UITools
         /// </summary>
         protected override void OnSkinUI()
         {
-            if (textTypes != FlexibleUIData.TEXT_TYPES.None)
+            if (textType.enumSelected != "None")
             {
                 if(textLabel == null)
                     textLabel = GetComponent<Text>();
                 
                 for (int i = 0; i < skinData.flexibleUIText.Count; i++)
                 {
-                    if (skinData.flexibleUIText[i].type.Equals(textTypes))
-                    {
+                    if (!skinData.flexibleUIText[i].name.Equals(textType.enumSelected)) continue;
                     
-                        textLabel.font = skinData.flexibleUIText[i].fontAsset;
-                        textLabel.fontSize = skinData.flexibleUIText[i].fontSize;
-                        textLabel.fontStyle = skinData.flexibleUIText[i].fontStyle;
+                    textLabel.font = skinData.flexibleUIText[i].fontAsset;
+                    textLabel.fontSize = skinData.flexibleUIText[i].fontSize;
+                    textLabel.fontStyle = skinData.flexibleUIText[i].fontStyle;
                     
-                        //textLabel.lineSpacing = skinData.flexibleUIText[i].lineSpacing;
-                        textLabel.text = ModifyText(textLabel.text, skinData.flexibleUIText[i].modifier);
+                    //textLabel.lineSpacing = skinData.flexibleUIText[i].lineSpacing;
+                    textLabel.text = ModifyText(textLabel.text, skinData.flexibleUIText[i].modifier);
                         
-                        textLabel.resizeTextForBestFit = skinData.flexibleUIText[i].hasBestFit;
+                    textLabel.resizeTextForBestFit = skinData.flexibleUIText[i].hasBestFit;
                         
-                        if(changeMaxSize)
-                            textLabel.resizeTextMaxSize = skinData.flexibleUIText[i].fontSize;
+                    if(changeMaxSize)
+                        textLabel.resizeTextMaxSize = skinData.flexibleUIText[i].fontSize;
                     
-                        if(changeColor)
-                            textLabel.color = skinData.flexibleUIText[i].color;
+                    if(changeColor)
+                        textLabel.color = skinData.flexibleUIText[i].color;
 
-                        textLabel.material = skinData.flexibleUIText[i].hasOutline ? skinData.flexibleUIText[i].outlineMaterial : new Material(Shader.Find("UI/Default"));
-                        //textOutline.enabled = skinData.flexibleUIText[i].hasOutline;
-                        //textOutline.effectColor = skinData.flexibleUIText[i].outlineColor;
-                        //textOutline.effectDistance = new Vector2( skinData.flexibleUIText[i].outlineX,  skinData.flexibleUIText[i].outlineY);
-                    
-                    }
+                    textLabel.material = skinData.flexibleUIText[i].hasOutline ? skinData.flexibleUIText[i].outlineMaterial : new Material(Shader.Find("UI/Default"));
+                    //textOutline.enabled = skinData.flexibleUIText[i].hasOutline;
+                    //textOutline.effectColor = skinData.flexibleUIText[i].outlineColor;
+                    //textOutline.effectDistance = new Vector2( skinData.flexibleUIText[i].outlineX,  skinData.flexibleUIText[i].outlineY);
                 }
             }
             
