@@ -1,0 +1,16 @@
+{
+    "name": "whiestar.uitools.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:72561a4fe4915844291cfab9a25f9193"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

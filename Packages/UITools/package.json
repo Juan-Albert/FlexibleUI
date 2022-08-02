@@ -1,0 +1,23 @@
+{
+  "name": "com.whiestar.uitools",
+  "displayName": "UITools",
+  "description": "Tools for UI",
+  "keywords": [
+    "unity",
+    "tools"
+  ],
+  "unity": "2020.3",
+  "version": "0.9.1",
+  "author": {
+    "name": "Whiestar",
+    "email": "ratseihw@gmail.com"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:4873"
+  },
+  "type": "tool",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "hideInEditor": false
+}

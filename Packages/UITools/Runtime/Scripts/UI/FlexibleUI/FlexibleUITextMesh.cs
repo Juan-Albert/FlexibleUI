@@ -5,8 +5,7 @@ using UnityEngine;
 
 namespace UITools
 {
-
-
+    
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class FlexibleUITextMesh : FlexibleUI
     {
